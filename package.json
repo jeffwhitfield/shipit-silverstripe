@@ -1,0 +1,35 @@
+{
+  "name": "shipit-silverstripe",
+  "version": "0.1.0",
+  "description": "A set of SilverStripe tasks for Shipit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeffwhitfield/shipit-silverstripe.git"
+  },
+  "keywords": [
+    "shipit",
+    "deploy",
+    "silverstripe",
+    "deployment"
+  ],
+  "author": "Jeff Whitfield <jeff@soulcraftgroup.com> (http://thejeffwhitfield.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeffwhitfield/shipit-silverstripe/issues"
+  },
+  "homepage": "https://github.com/jeffwhitfield/shipit-silverstripe",
+  "devDependencies": {
+    "shipit-cli": "^1.1.0"
+  },
+  "dependencies": {
+    "chalk": "^0.5.1",
+    "path2": "^0.1.0",
+    "shipit-utils": "^1.0.2",
+    "sprintf-js": "^1.0.2",
+    "yargs": "^3.4.5"
+  }
+}
