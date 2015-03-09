@@ -1,6 +1,5 @@
 var utils = require('shipit-utils');
 var chalk = require('chalk');
-var sprintf = require('sprintf-js').sprintf;
 var init = require('../../lib/init');
 
 /**
@@ -14,16 +13,19 @@ module.exports = function (gruntOrShipit) {
     var shipit = utils.getShipit(gruntOrShipit);
     shipit = init(shipit);
 
+    return composer();
+
+    /**
+     * Run Composer on current release path.
+     */
+
     function composer() {
-      return shipit['remote'](
-        sprintf('cd %s && php composer.phar update', shipit.currentPath)
-      );
+      shipit.log('Running - Composer update');
+      return shipit.remote('cd '+ shipit.currentPath +' && php composer.phar update')
+      .then(function () {
+        shipit.log(chalk.green('Complete - Composer update'));
+      });
     }
 
-    shipit.log('Running - Composer update');
-    return composer()
-    .then(function () {
-      shipit.log(chalk.green('Complete - Composer update'));
-    });
   }
 };
