@@ -1,6 +1,6 @@
 {
   "name": "shipit-silverstripe",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A set of SilverStripe tasks for Shipit",
   "main": "index.js",
   "scripts": {
@@ -28,7 +28,7 @@
   "dependencies": {
     "chalk": "^0.5.1",
     "path2": "^0.1.0",
-    "shipit-utils": "^1.0.2",
+    "shipit-utils": "^1.2.0",
     "yargs": "^3.4.5"
   }
 }
