@@ -7,9 +7,8 @@ var init = require('../../lib/init');
  */
 
 module.exports = function (gruntOrShipit) {
-  utils.registerTask(gruntOrShipit, 'silverstripe:devbuild', task);
 
-  function task() {
+  var task = function() {
     var shipit = utils.getShipit(gruntOrShipit);
     var server = shipit.config.servers.split('@');
     var host = server.length > 1 ? server[1] : server[0];
@@ -25,7 +24,6 @@ module.exports = function (gruntOrShipit) {
     /**
      * Run dev/build on current release path.
      */
-
     function devbuild() {
       return shipit.remote('cd '+ shipit.currentPath +' && php framework/cli-script.php dev/build && rm -R ./silverstripe-cache/*')
       .then(function () {
@@ -33,17 +31,17 @@ module.exports = function (gruntOrShipit) {
       });
     }
 
-
     /**
      * Run flush on current host.
      */
-
     function flush() {
       return shipit.remote('curl http://'+host+'/?flush=all&env_type=dev')
       .then(function () {
         shipit.log(chalk.green('Complete - flush'));
       });
     }
-
   }
+
+  utils.registerTask(gruntOrShipit, 'silverstripe:devbuild', task, true);
+
 };

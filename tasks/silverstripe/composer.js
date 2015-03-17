@@ -7,9 +7,8 @@ var init = require('../../lib/init');
  */
 
 module.exports = function (gruntOrShipit) {
-  utils.registerTask(gruntOrShipit, 'silverstripe:composer', task);
 
-  function task() {
+  var task = function() {
     var shipit = utils.getShipit(gruntOrShipit);
     shipit = init(shipit);
 
@@ -18,7 +17,6 @@ module.exports = function (gruntOrShipit) {
     /**
      * Run Composer on current release path.
      */
-
     function composer() {
       shipit.log('Running - Composer update');
       return shipit.remote('cd '+ shipit.currentPath +' && php composer.phar update')
@@ -26,6 +24,8 @@ module.exports = function (gruntOrShipit) {
         shipit.log(chalk.green('Complete - Composer update'));
       });
     }
-
   }
+
+  utils.registerTask(gruntOrShipit, 'silverstripe:composer', task, true);
+
 };
